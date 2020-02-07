@@ -9,8 +9,11 @@
 </template>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+  font-family:'Courier New', Courier, monospace;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -21,6 +24,7 @@
   padding: 30px;
 
   a {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-weight: bold;
     color: #2c3e50;
 
