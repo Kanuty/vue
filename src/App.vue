@@ -12,12 +12,17 @@
 * {
   box-sizing: border-box;
   font-family:'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
 }
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-image: url('./assets/background_mod.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #nav {
@@ -26,10 +31,10 @@
   a {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-weight: bold;
-    color: #2c3e50;
+    color: #FDD835;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #42B983;
     }
   }
 }

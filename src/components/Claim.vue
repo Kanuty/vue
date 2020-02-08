@@ -32,7 +32,7 @@ export default {
 
   .subclaim {
     margin: 20px 0 0 0;
-    font-size: 13px;
+    font-size: 15px;
   }
 
 </style>
