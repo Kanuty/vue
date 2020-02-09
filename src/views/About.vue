@@ -7,17 +7,17 @@
 
 <style lang="scss" scoped>
   .about {
+    align-items: center;
+    color: #42b983 ;
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 0;
     padding: 30px;
     width: 100%;
-    color: #42b983 ;
-    text-shadow: 1px 1px #14851D;
+    text-shadow: 1px 1px #14851d;
   }
   a {
-    color: #FDD835;
-    text-shadow: 1px 1px #BB7711;
+    color: #fdd835;
+    text-shadow: 1px 1px #bb7711;
   }
 </style>
