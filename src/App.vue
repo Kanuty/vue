@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <BackgroundImage />
     <div id="nav">
       <router-link to="/">Search</router-link> |
       <router-link to="/about">About</router-link>
@@ -7,7 +8,17 @@
     <router-view/>
   </div>
 </template>
+<script>
 
+import BackgroundImage from '@/components/BackgroundImage.vue';
+
+export default {
+   name: 'App',
+  components: {
+    BackgroundImage,
+  },
+}
+</script>
 <style lang="scss">
 * {
   box-sizing: border-box;
@@ -16,25 +27,22 @@
   padding: 0;
 }
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  background-image: url('./assets/background_mod.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
 }
 
 #nav {
   padding: 30px;
 
   a {
+    color: #fdd835;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-weight: bold;
-    color: #FDD835;
 
     &.router-link-exact-active {
-      color: #42B983;
+      color: #42b983;
     }
   }
 }

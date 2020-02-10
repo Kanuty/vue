@@ -19,20 +19,23 @@ export default {
 
 <style lang="scss" scoped>
   .claimWrapper {
+    align-items: center;
     display: flex;
     flex-direction: column;
+    height: 100%;
     justify-content: center;
-    align-items: center;
+    max-width: 70vw;
+    
   }
 
   .claim {
-    font-size: 50px;
+    font-size: 70px;
     margin: 0;
   }
 
   .subclaim {
+    font-size: 20px;
     margin: 20px 0 0 0;
-    font-size: 15px;
   }
 
 </style>
