@@ -1,19 +1,29 @@
 <template>
   <div class="wrapper">
     <transition name="slide">
-      <img 
-      src="../assets/vue_rock.svg"
-      v-if="step === 1"
-      class="logo"
-      />
+      <img
+        v-if="step === 1"
+        src="../assets/vue_rock.svg"
+        class="logo"
+      >
     </transition>
     <transition name="fade">
-      <Claim  v-if="step === 0" />
+      <Claim v-if="step === 0" />
     </transition>
     <div class="search">
       <SearchInput 
         v-model="searchValue" 
         @input="handleInput" 
+      />
+    </div>
+    <div 
+      v-if="results && loading && step === 1"
+      class="results"
+    >
+      <Item 
+        v-for="item in results"
+        :item="item"
+        :key="item.data[0].nasa_id"
       />
     </div>
   </div>
@@ -24,6 +34,7 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 
 import Claim from '@/components/Claim.vue';
+import Item from '@/components/Item.vue'
 import SearchInput from '@/components/SearchInput.vue';
 
 const API = 'https://images-api.nasa.gov/search';
@@ -32,6 +43,7 @@ export default {
   name: 'Search',
   components: {
     Claim,
+    Item,
     SearchInput,
   },
    data() {
@@ -39,6 +51,7 @@ export default {
       results: [],
       searchValue: '',
       step: 0,
+      loading: false,
     }
   }, 
   methods: {
