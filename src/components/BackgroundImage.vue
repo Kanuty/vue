@@ -1,11 +1,13 @@
 <template>
   <img class='backgroundImage'>
 </template>
+
 <script>
 export default {
   name: 'BackgroundImage',
 };
 </script>
+
 <style lang='scss' scoped>
 .backgroundImage{
   background-image: url('../assets/background_mod.jpg');

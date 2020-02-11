@@ -1,13 +1,13 @@
 <template>
-<div class="searchInputWrapper">
-   <label for="search">Search</label>
-      <input
-        id="search"
-        name="search"
-        :value="value"
-        @input="handleChange"
-      />
-</div>
+  <div class="searchInputWrapper">
+    <label for="search">Search</label>
+        <input
+          id="search"
+          name="search"
+          :value="value"
+          @input="handleChange"
+        />
+  </div>
 </template>
 
 <script>

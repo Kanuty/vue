@@ -1,5 +1,7 @@
 <template>
-  <div :style="style" class="item" />
+  <div>
+    <div :style="style" class="item" />
+  </div>
 </template>
 
 <script>
@@ -30,6 +32,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
+    box-shadow: 2px 2px 3px #333;
     height: 300px;
     width: 300px;
   }

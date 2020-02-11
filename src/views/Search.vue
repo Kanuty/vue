@@ -24,8 +24,20 @@
         v-for="item in results"
         :item="item"
         :key="item.data[0].nasa_id"
+        @click.native="handleModalOpen(item)"
       />
     </div>
+    <div
+      class="loader"
+      v-if="step === 1 && loading === true"
+    />
+    <transition name="fade">
+      <Modal 
+        v-if="modalOpen === true"
+        :item="modalItem"
+        @closeModal="modalOpen = false"
+      />
+    </transition>
   </div>
 </template>
 
@@ -34,7 +46,8 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 
 import Claim from '@/components/Claim.vue';
-import Item from '@/components/Item.vue'
+import Item from '@/components/Item.vue';
+import Modal from '@/components/Modal.vue';
 import SearchInput from '@/components/SearchInput.vue';
 
 const API = 'https://images-api.nasa.gov/search';
@@ -44,17 +57,24 @@ export default {
   components: {
     Claim,
     Item,
+    Modal,
     SearchInput,
   },
    data() {
     return {
+      loading: false,
+      modalItem: null,
+      modalOpen: false,
       results: [],
       searchValue: '',
       step: 0,
-      loading: false,
     }
   }, 
   methods: {
+    handleModalOpen(item) {
+      this.modalOpen = true;
+      this.modalItem = item;
+    },
     handleInput: debounce(function call() {
       axios.get(`${API}?q=${this.searchValue}&media_type=image`)
         .then((response) => {
@@ -103,4 +123,42 @@ export default {
     width: 100%;
     text-shadow: 1px 1px #14851d;
   }
+
+  .results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 50px;
+  }
+
+.loader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin-top: 100px;
+
+  @media (min-width: 768px) {
+    height: 90px;
+    width: 90px;
+  }
+}
+.loader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: loader 1.2s linear infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 </style>
