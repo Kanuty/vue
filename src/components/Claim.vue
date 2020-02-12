@@ -1,6 +1,8 @@
 <template>
   <div class="claimWrapper">
-    <h1 class="claim">SPACER</h1>
+    <h1 class="claim">
+      SPACER
+    </h1>
     <p class="subclaim">
       Begin your journey through our amazing galaxy
       and discover planets you never even heard of.

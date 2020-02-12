@@ -29,8 +29,8 @@
     >
       <Item 
         v-for="item in results"
-        :item="item"
         :key="item.data[0].nasa_id"
+        :item="item"
         @click.native="handleModalOpen(item)"
       />
     </div>

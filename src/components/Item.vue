@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div :style="style" class="item" />
+    <div
+      :style="style"
+      class="item"
+    />
   </div>
 </template>
 

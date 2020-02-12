@@ -5,17 +5,19 @@
         <img :src="photo">
       </div>
       <div class="description">
-        <h2 class="title">{{ title }}</h2>
-          <p class="description">
-            {{ description }}
-          </p>
-        </div>
+        <h2 class="title">
+          {{ title }}
+        </h2>
+        <p class="description">
+          {{ description }}
+        </p>
       </div>
-      <div
-        class="close"
-        @click="$emit('closeModal')" 
-      />
     </div>
+    <div
+      class="close"
+      @click="$emit('closeModal')" 
+    />
+  </div>
 </template>
 
 <script>

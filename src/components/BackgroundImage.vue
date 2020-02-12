@@ -1,5 +1,5 @@
 <template>
-  <img class='backgroundImage'>
+  <img class="backgroundImage">
 </template>
 
 <script>
