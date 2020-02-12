@@ -16,6 +16,13 @@
         @input="handleInput" 
       />
     </div>
+    <div
+      class="notFound"
+      v-if="step === 1 && results.length === 0"
+    >
+      <h3>There is no data about {{ searchValue }}</h3>
+      <h4>Impossible! Maybe archives are not completed?</h4>
+    </div>
     <div 
       v-if="results && loading && step === 1"
       class="results"
@@ -27,10 +34,6 @@
         @click.native="handleModalOpen(item)"
       />
     </div>
-    <div
-      class="loader"
-      v-if="step === 1 && loading === true"
-    />
     <transition name="fade">
       <Modal 
         v-if="modalOpen === true"
@@ -91,6 +94,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import 'src/variables/colors';
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s ease;
   }
@@ -114,14 +119,14 @@ export default {
 
   .wrapper {
     align-items: center;
-    color: #42b983;
+    color: $primary;
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 30px;
     position: relative;
     width: 100%;
-    text-shadow: 1px 1px #14851d;
+    text-shadow: 1px 1px $primary-shadow;
   }
 
   .results {
@@ -131,34 +136,4 @@ export default {
     margin-top: 50px;
   }
 
-.loader {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-  margin-top: 100px;
-
-  @media (min-width: 768px) {
-    height: 90px;
-    width: 90px;
-  }
-}
-.loader:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid #fff;
-  border-color: #fff transparent #fff transparent;
-  animation: loader 1.2s linear infinite;
-}
-@keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 </style>

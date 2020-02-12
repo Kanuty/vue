@@ -25,7 +25,6 @@ export default {
     height: 100%;
     justify-content: center;
     max-width: 70vw;
-    
   }
 
   .claim {

@@ -28,12 +28,21 @@
 </script>
 
 <style lang="scss" scoped>
+  @import 'src/variables/colors';
+
   .item {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
-    box-shadow: 2px 2px 3px #333;
+    border:  2px ridge $secondary;
+    box-shadow: 2px 2px 3px $universalDark;
+    cursor: pointer;
     height: 300px;
+    transition: 0.3s;
     width: 300px;
+
+    &:hover {
+      box-shadow: 0px 0px 15px $secondary-shadow;
+    }
   }
 </style>

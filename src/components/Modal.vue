@@ -11,7 +11,10 @@
           </p>
         </div>
       </div>
-      <div class="close" @click="$emit('closeModal')" />
+      <div
+        class="close"
+        @click="$emit('closeModal')" 
+      />
     </div>
 </template>
 
@@ -40,14 +43,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'src/variables/colors';
   .description {
-    color: #333;
+    color: $universalDark;
   }
 
   .close {
     cursor: pointer;
-    position: absolute;
     height: 50px;
+    position: absolute;
     right: 0;
     top: 0;
     width: 50px;
@@ -55,7 +59,7 @@ export default {
     &::after,
     &::before
      {
-      background: #333;
+      background: $universalDark;
       content: '';
       display: block;
       height: 4px;
@@ -91,20 +95,21 @@ export default {
     }
 
     .photo {
-      background: #333;
       height: auto;
       width: 100%;
     }
 
     img {
-      box-shadow: 5px 5px 3px #333;
+      border:  2px ridge $secondary;
+      box-shadow: 0px 0px 15px $universalDark;
       height: 350px;
       width: 350px;
     }
   }
 
   .outerWrapper {
-    background: #ccc;
+    background: rgba(236, 238, 216, 0.95);
+    border-radius: 5px;
     left: 0;
     max-width: 100%;
     position: fixed;
@@ -112,7 +117,7 @@ export default {
 
     @media (min-width: 1024px) {
       bottom: 0;
-      box-shadow: 20px 30px 30px -10px rgba(28, 141, 13, 0.6);
+      box-shadow: 5px 5px 50px $primary-shadow;
       height: 60%;
       left: 0;
       margin: auto;
