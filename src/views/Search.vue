@@ -16,6 +16,13 @@
         @input="handleInput" 
       />
     </div>
+    <div
+      class="notFound"
+      v-if="step === 1 && results.length === 0"
+    >
+      <h3>There is no data about {{ searchValue }}</h3>
+      <h4>Impossible! Maybe archives are not completed?</h4>
+    </div>
     <div 
       v-if="results && loading && step === 1"
       class="results"
@@ -24,8 +31,16 @@
         v-for="item in results"
         :item="item"
         :key="item.data[0].nasa_id"
+        @click.native="handleModalOpen(item)"
       />
     </div>
+    <transition name="fade">
+      <Modal 
+        v-if="modalOpen === true"
+        :item="modalItem"
+        @closeModal="modalOpen = false"
+      />
+    </transition>
   </div>
 </template>
 
@@ -34,7 +49,8 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 
 import Claim from '@/components/Claim.vue';
-import Item from '@/components/Item.vue'
+import Item from '@/components/Item.vue';
+import Modal from '@/components/Modal.vue';
 import SearchInput from '@/components/SearchInput.vue';
 
 const API = 'https://images-api.nasa.gov/search';
@@ -44,17 +60,24 @@ export default {
   components: {
     Claim,
     Item,
+    Modal,
     SearchInput,
   },
    data() {
     return {
+      loading: false,
+      modalItem: null,
+      modalOpen: false,
       results: [],
       searchValue: '',
       step: 0,
-      loading: false,
     }
   }, 
   methods: {
+    handleModalOpen(item) {
+      this.modalOpen = true;
+      this.modalItem = item;
+    },
     handleInput: debounce(function call() {
       axios.get(`${API}?q=${this.searchValue}&media_type=image`)
         .then((response) => {
@@ -71,6 +94,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import 'src/variables/colors';
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s ease;
   }
@@ -94,13 +119,21 @@ export default {
 
   .wrapper {
     align-items: center;
-    color: #42b983;
+    color: $primary;
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 30px;
     position: relative;
     width: 100%;
-    text-shadow: 1px 1px #14851d;
+    text-shadow: 1px 1px $primary-shadow;
   }
+
+  .results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 50px;
+  }
+
 </style>

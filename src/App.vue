@@ -20,6 +20,9 @@ export default {
 }
 </script>
 <style lang="scss">
+
+@import 'src/variables/colors';
+
 * {
   box-sizing: border-box;
   font-family:'Courier New', Courier, monospace;
@@ -27,7 +30,7 @@ export default {
   padding: 0;
 }
 #app {
-  color: #2c3e50;
+  color: $primary;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-align: center;
@@ -37,12 +40,12 @@ export default {
   padding: 30px;
 
   a {
-    color: #fdd835;
+    color: $secondary;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     font-weight: bold;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: $primary;
     }
   }
 }

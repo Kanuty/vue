@@ -1,13 +1,13 @@
 <template>
-<div class="searchInputWrapper">
-   <label for="search">Search</label>
-      <input
-        id="search"
-        name="search"
-        :value="value"
-        @input="handleChange"
-      />
-</div>
+  <div class="searchInputWrapper">
+    <label for="search">Search</label>
+        <input
+          id="search"
+          name="search"
+          :value="value"
+          @input="handleChange"
+        />
+  </div>
 </template>
 
 <script>
@@ -36,7 +36,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import 'src/variables/colors';
+
   .searchInputWrapper {
       align-items: center;
       display: flex;
@@ -54,19 +56,19 @@ export default {
     input {
       background-color: rgba(0, 0, 0, 0.1);
       border: 0;
-      border-bottom: 1px solid #fdd835;
-      color: #fdd835;
+      border-bottom: 1px solid $secondary;
+      color: $secondary;
       height: 30px;
       margin: 5px;
       padding: 0 0 0 5px;
-      text-shadow: 1px 1px #bb7711;
+      text-shadow: 1px 1px $secondary-shadow;
       text-align: center;
       transition: background-color .7s, box-shadow .2s;
     }
 
     input:focus {
       background-color: rgba(0, 0, 0, 0.3);
-      box-shadow: 0px 2px 0px #bb7711;;
+      box-shadow: 0px 2px 0px $secondary-shadow;;
       outline:none;
     }
 </style>
