@@ -17,8 +17,8 @@
       />
     </div>
     <div
-      class="notFound"
       v-if="step === 1 && results.length === 0"
+      class="notFound"
     >
       <h3>There is no data about {{ searchValue }}</h3>
       <h4>Impossible! Maybe archives are not completed?</h4>
